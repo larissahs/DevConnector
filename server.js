@@ -4,17 +4,20 @@ const users = require('./routes/api/users');
 const profile = require ('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const app =  express();
+const bodyParser = require('body-parser');
 
 //Db config
 const db = require ('./config/keys').mongoURI;
 mongoose.connect(db).then(() => console.log('MongoDb connected')).catch(err => console.log(err));
 
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hello'));
 
 app.use('/api/users', users);
 app.use('/api/profile', profile);
-app.use('api/posts', posts);
+app.use('/api/posts', posts);
  
 const port = 5004;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
