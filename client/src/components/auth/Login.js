@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -29,7 +28,7 @@ class Login extends Component {
             
         };
 
-        axios.post('/api/users/login', newUser).then(res => console.log(res.data)).catch(err => this.setState({errors: err.response.data}));
+        
     }
 
     render() {
