@@ -1,0 +1,4 @@
+rc
+{
+    "presets": ["@babel/env", "@babel/react"]
+}
